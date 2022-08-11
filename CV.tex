@@ -1,0 +1,123 @@
+\documentclass[paper=a4,fontsize=11pt]{scrartcl} % KOMA-article class
+							
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath,amsfonts,amsthm}     % Math packages
+\usepackage{graphicx}                    % Enable pdflatex
+\usepackage[svgnames]{xcolor}            % Colors by their 'svgnames'
+\usepackage{geometry}
+	\textheight=700px                    % Saving trees ;-)
+\usepackage{url}
+\usepackage{pifont}
+
+\frenchspacing              % Better looking spacings after periods
+\pagestyle{empty}           % No pagenumbers/headers/footers
+
+%%% Custom sectioning (sectsty package)
+%%% ------------------------------------------------------------
+\usepackage{sectsty}
+
+\sectionfont{%			            % Change font of \section command
+	\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
+	\sectionrule{0pt}{0pt}{-5pt}{3pt}}
+    
+%%% Macros
+%%% ------------------------------------------------------------
+\newlength{\spacebox}
+\settowidth{\spacebox}{8888888888}			% Box to align text
+\newcommand{\sepspace}{\vspace*{1em}}		% Vertical space macro
+
+\newcommand{\MyName}[1]{ % Name
+		\Huge \usefont{OT1}{phv}{b}{n} \hfill #1
+		\par \normalsize \normalfont}
+		
+\newcommand{\MySlogan}[1]{ % Slogan (optional)
+		\large \usefont{OT1}{phv}{m}{n}\hfill \textit{#1}
+		\par \normalsize \normalfont}
+
+\newcommand{\NewPart}[1]{\section*{\uppercase{#1}}}
+
+\newcommand{\PersonalEntry}[2]{
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\textit{#1}}		       % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par}    % Entry value
+
+\newcommand{\SkillsEntry}[2]{      % Same as \PersonalEntry
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\textit{#1}}			   % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par}    % Entry value	
+		
+\newcommand{\EducationEntry}[4]{
+		\noindent \textbf{#1} \hfill      % Study
+        \colorbox{White}{\color{Black}#2} \par  % Duration
+		\noindent \textit{#3} \par        % School
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par}
+
+\newcommand{\WorkEntry}[4]{				  % Same as \EducationEntry
+		\noindent \textbf{#1} \hfill      % Jobname
+		\colorbox{White}{\color{Black}#2} \par  % Duration
+		\noindent \textit{#3} \par              % Company
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par}
+
+%%% Begin Document
+%%% ------------------------------------------------------------
+\begin{document}
+% you can upload a photo and include it here...
+%\begin{wrapfigure}{l}{0.5\textwidth}
+%	\vspace*{-2em}
+%		\includegraphics[width=0.15\textwidth]{photo}
+%\end{wrapfigure}
+
+\MyName{Viktor Taraba}
+
+\sepspace
+
+%%% Personal details
+%%% ------------------------------------------------------------
+\NewPart{Personal details}{}
+
+\PersonalEntry{Location}{Kyiv}
+\PersonalEntry{Mail}{\url{victortaraba@gmail.com}}
+
+%%% Work experience
+%%% ------------------------------------------------------------
+\NewPart{Work experience}{}
+
+\WorkEntry{Junior BI Developer}{May 2022 - present}{ValueTek, Full-time}{Job description goes here. To maintain a stylish look, try to fill this description with a few lines of text. Do the same for the other entries in this section.}
+\sepspace
+
+\WorkEntry{Data Analyst (Reporting Automation Unit)}{Aug 2021 - May 2022}{First Ukrainian International Bank, Part-time}{ \begin{itemize} \setlength{\itemsep}{0pt} \item Creating and modifying reports
+\item Communicating with internal customers
+\item Writing SQL queries and stored procedures \item[\textcolor{gray}{\textbullet}] Tools: SSRS Report Builder, SSMS, Power BI, DBeaver, GitLab, Jira, Confluence \end{itemize}}
+\sepspace
+
+\WorkEntry{Intern (Assurance Department)}{Oct 2020 - Jul 2021}{PricewaterhouseCoopers Ukraine, Full-time}{
+\begin{itemize} \setlength{\itemsep}{0pt} \item Performing analytical procedures and controls testing \item Automating audit procedures using Alteryx and VBA \item Review of client's documents and accounting data 
+\item Industry experience: telecommunications, oil&gas, transshipment \item[\textcolor{gray}{\textbullet}] Tools: Alteryx, MS Excel (including VBA), Aura \end{itemize}}
+
+%%% Education
+%%% ------------------------------------------------------------
+\NewPart{Education}{}
+
+\EducationEntry{Bachelor's degree, Economic cybernetics}{Sep 2018 - Jun 2022}{Taras Shevchenko National University of Kyiv}{\begin{itemize} \setlength{\itemsep}{0pt} \item[\textcolor{white}{\textbullet}]  GPA (100-scale) - 91, Diploma with Honours. \item[\textcolor{white}{\textbullet}] Bachelor's qualification work “Forecasting the dynamics of the UX Index (The Ukrainian Equities Index) using the methods of technical analysis and machine learning”.\end{itemize}}
+
+
+%%% Skills
+%%% ------------------------------------------------------------
+\NewPart{Skills}{}
+
+\SkillsEntry{Languages}{Ukrainian (mother tongue)}
+\SkillsEntry{}{English (Upper-Intermediate)}
+\SkillsEntry{}{}
+\SkillsEntry{Software}{SQL}
+\SkillsEntry{}{Python (basic data cleaning, manipulation and visualization)}
+\SkillsEntry{}{Power BI, SSRS}
+\SkillsEntry{}{R (basic operations, functions, basic visualization)}
+
+
+\end{document}
