@@ -1,5 +1,5 @@
 \documentclass[paper=a4,fontsize=11pt]{scrartcl} % KOMA-article class
-							
+			
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage[protrusion=true,expansion=true]{microtype}
@@ -8,7 +8,9 @@
 \usepackage[svgnames]{xcolor}            % Colors by their 'svgnames'
 \usepackage{geometry}
 	\textheight=700px                    % Saving trees ;-)
-\usepackage{url}
+
+
+\usepackage{fontawesome}
 \usepackage{pifont}
 
 \frenchspacing              % Better looking spacings after periods
@@ -30,10 +32,6 @@
 
 \newcommand{\MyName}[1]{ % Name
 		\Huge \usefont{OT1}{phv}{b}{n} \hfill #1
-		\par \normalsize \normalfont}
-		
-\newcommand{\MySlogan}[1]{ % Slogan (optional)
-		\large \usefont{OT1}{phv}{m}{n}\hfill \textit{#1}
 		\par \normalsize \normalfont}
 
 \newcommand{\NewPart}[1]{\section*{\uppercase{#1}}}
@@ -74,7 +72,6 @@
 %\end{wrapfigure}
 
 \MyName{Viktor Taraba}
-
 \sepspace
 
 %%% Personal details
@@ -82,23 +79,21 @@
 \NewPart{Personal details}{}
 
 \PersonalEntry{Location}{Kyiv}
-\PersonalEntry{Mail}{\url{victortaraba@gmail.com}}
-
+\PersonalEntry{Mail}{\textcolor{blue}{victortaraba@gmail.com}}
+\PersonalEntry{\faLinkedin}{\url{\textcolor{blue}{https://www.linkedin.com/in/viktor-taraba/}}}
+\PersonalEntry{\faGithub}{\url{\textcolor{blue}{https://github.com/viktor-taraba}}}
 %%% Work experience
 %%% ------------------------------------------------------------
 \NewPart{Work experience}{}
 
-\WorkEntry{Junior BI Developer}{May 2022 - present}{ValueTek, Full-time}{Job description goes here. To maintain a stylish look, try to fill this description with a few lines of text. Do the same for the other entries in this section.}
-\sepspace
-
-\WorkEntry{Data Analyst (Reporting Automation Unit)}{Aug 2021 - May 2022}{First Ukrainian International Bank, Part-time}{ \begin{itemize} \setlength{\itemsep}{0pt} \item Creating and modifying reports
+\WorkEntry{Junior BI Developer (Reporting Automation Unit)}{Aug 2021 - present}{First Ukrainian International Bank, Part-time}{ \begin{itemize} \setlength{\itemsep}{0pt} \item Creating and modifying reports
 \item Communicating with internal customers
 \item Writing SQL queries and stored procedures \item[\textcolor{gray}{\textbullet}] Tools: SSRS Report Builder, SSMS, Power BI, DBeaver, GitLab, Jira, Confluence \end{itemize}}
 \sepspace
 
 \WorkEntry{Intern (Assurance Department)}{Oct 2020 - Jul 2021}{PricewaterhouseCoopers Ukraine, Full-time}{
 \begin{itemize} \setlength{\itemsep}{0pt} \item Performing analytical procedures and controls testing \item Automating audit procedures using Alteryx and VBA \item Review of client's documents and accounting data 
-\item Industry experience: telecommunications, oil&gas, transshipment \item[\textcolor{gray}{\textbullet}] Tools: Alteryx, MS Excel (including VBA), Aura \end{itemize}}
+\item Industry experience: telecommunications, oil and gas, transshipment \item[\textcolor{gray}{\textbullet}] Tools: Alteryx, MS Excel (including VBA), Aura \end{itemize}}
 
 %%% Education
 %%% ------------------------------------------------------------
@@ -118,6 +113,5 @@
 \SkillsEntry{}{Python (basic data cleaning, manipulation and visualization)}
 \SkillsEntry{}{Power BI, SSRS}
 \SkillsEntry{}{R (basic operations, functions, basic visualization)}
-
 
 \end{document}
