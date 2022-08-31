@@ -546,3 +546,25 @@ files = ( 'author_with_header.json')
 file_format = ( format_name=LIBRARY_CARD_CATALOG.PUBLIC.JSON_FILE_FORMAT );
 
 select * from LIBRARY_CARD_CATALOG.PUBLIC.AUTHOR_INGEST_JSON;
+
+//returns AUTHOR_UID value from top-level object's attribute
+select raw_author:AUTHOR_UID
+from author_ingest_json;
+
+//returns the data in a way that makes it look like a normalized table
+SELECT 
+ raw_author:AUTHOR_UID
+,raw_author:FIRST_NAME::STRING as FIRST_NAME
+,raw_author:MIDDLE_NAME::STRING as MIDDLE_NAME
+,raw_author:LAST_NAME::STRING as LAST_NAME
+FROM AUTHOR_INGEST_JSON;
+
+select GRADER(step, (actual = expected), actual, expected, description) as graded_results from
+(
+  SELECT 'DWW16' as step
+  ,(select row_count 
+    from LIBRARY_CARD_CATALOG.INFORMATION_SCHEMA.TABLES 
+    where table_name = 'AUTHOR_INGEST_JSON') as actual
+  ,6 as expected
+  ,'Check number of rows' as description
+ ); 
