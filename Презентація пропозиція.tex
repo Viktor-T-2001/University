@@ -1,0 +1,205 @@
+\documentclass[aspectratio=169]{beamer}
+\date{}
+%\usecolortheme{beaver}
+\usepackage[english,ukrainian]{babel}
+\usepackage{hyperref}
+\hypersetup{colorlinks,urlcolor=blue}
+\makeatletter
+\DeclareUrlCommand\ULurl@@{%
+  \def\UrlFont{\ttfamily\color{blue}}%
+  \def\UrlLeft{\uline\bgroup}%
+  \def\UrlRight{\egroup}}
+\def\ULurl@#1{\hyper@linkurl{\ULurl@@{#1}}{#1}}
+\DeclareRobustCommand*\ULurl{\hyper@normalise\ULurl@}
+\makeatother
+\usepackage[table]{colortbl}
+\usecolortheme{whale}
+\usepackage{etoolbox,refcount}
+\usepackage{multicol}
+
+\newcounter{countitems}
+\newcounter{nextitemizecount}
+\newcommand{\setupcountitems}{%
+  \stepcounter{nextitemizecount}%
+  \setcounter{countitems}{0}%
+  \preto\item{\stepcounter{countitems}}%
+}
+\makeatletter
+\newcommand{\computecountitems}{%
+  \edef\@currentlabel{\number\c@countitems}%
+  \label{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
+}
+\newcommand{\nextitemizecount}{%
+  \getrefnumber{countitems@\number\c@nextitemizecount}%
+}
+\newcommand{\previtemizecount}{%
+  \getrefnumber{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
+}
+\makeatother    
+\newenvironment{AutoMultiColItemize}{%
+\ifnumcomp{\nextitemizecount}{>}{3}{\begin{multicols}{2}}{}%
+\setupcountitems\begin{itemize}}%
+{\end{itemize}%
+\unskip\computecountitems\ifnumcomp{\previtemizecount}{>}{3}{\end{multicols}}{}}
+\usepackage[utf8]{inputenc}
+
+\title{Дослідницька пропозиція на тему: \\ "Результативність торгових стратегій у кризові періоди на фондових ринках країн, що розвиваються"}
+\author{Тараба Віктор Сергійович}
+\institute{Спеціальність 072 «Фінанси, банківська справа, страхування та фондовий ринок» \\ Київський національний університет імені Тараса Шевченка\\Економічний факультет}
+
+\begin{document}
+	
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{План презентації}
+\setbeamertemplate{section in toc}[circle]
+%\setbeamercolor{section in toc}{fg=UniBlue}
+%\setbeamercolor*{section in toc}{fg=UniBlue}
+\tableofcontents
+\end{frame}
+
+\section{Обгрунтування актуальності теми}
+
+\begin{frame}
+\frametitle{Обгрунтування актуальності теми}
+\begin{itemize}
+\item Попри значну кількість наукових досліджень, присвячених особливостям застосування та результативності як графічних, так і кількісних методів технічного аналізу, доцільність їх застосування на практиці залишається сумнівною, що зумовлено як великою кількістю методів і ринків та інструментів для їх потенційного застосування, так і більшою увагою до фондових ринків розвинутих країн порівняно з країнами, що розвиваються
+\smallskip
+\item Майже не розглянуто питання поєднання кількох підходів до оцінки методів технічного аналізу та їх порівняння: точкова оцінка параметрів на основі історичних даних з розбивкою на тестову та тренувальну вибірки, та аналіз всієї сукупності результатів для певного методу
+\smallskip
+\item Недостатньо дослідженим є питання доцільності застосування методів технічного аналізу в кризові періоди в ситуації падіння фондового ринку і подальшого відновлення
+\end{itemize}
+\end{frame}
+
+\section{Мета, предмет, об’єкт та завдання наукового дослідження}
+
+\begin{frame}
+\frametitle{Мета, предмет, об’єкт та завдання наукового дослідження}
+\begin{itemize}
+\item \alert {Темою дослідження} є результативність торгових стратегій у кризові періоди на фондових ринках країн, що розвиваються.
+\tinyskip
+\item \alert {Метою дослідження} є виявлення ключових факторів, що впливають на результативність торгових стратегій на фондовому ринку, та вироблення рекомендацій стосовно особливостей застосування та доцільності використання торгових стратегій в кризові періоди на фондових ринках країн, що розвиваються.
+\tinyskip
+\item \alert {Об’єктом дослідження} є фондові ринки країн, що розвиваються.
+\tinyskip
+\item \alert {Предметом дослідження} є результативність методів прогнозування на фондовому ринку в кризові періоди та особливості їх практичного застосування.
+\tinyskip
+\item \alert {Завданнями дослідження} є:
+\begin{itemize}
+    \item[\textcolor{orange}{\textbullet}] розглянути теоретичні засади аналізу фондового ринку та основні методи прогнозування на фондовому ринку, переваги та недоліки таких методів
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Завдання наукового дослідження}
+\begin{itemize}
+\item \alert {Завданнями дослідження} є \textit{(продовження)}:
+\end{itemize}
+\begin{itemize}
+    \item[\textcolor{orange}{\textbullet}] проаналізувати особливості застосування та існуючі підходи до підбору оптимальних параметрів для кількісних методів технічного аналізу
+    \item[\textcolor{orange}{\textbullet}] сформувати базу даних та наповнити її даними по котируваннях фондових індексів країн, що розвиваються, та акціях, що входять до цих індексів за максимально доступний період з мінімальною межею в 20 років
+    \item[\textcolor{orange}{\textbullet}] виконати порівняння результативності методів технічного аналізу порівняно з пасивною стратегією buy-and-hold в кризові періоди
+    \item[\textcolor{orange}{\textbullet}] проаналізувати вплив транзакційних витрат на результати торгових стратегій
+    \item[\textcolor{orange}{\textbullet}] проаналізувати коректність точкових оцінок оптимальних параметрів для методів технічного аналізу на основі результатів для всіх можливих комбінацій вхідних параметрів для розглянутих методів
+    \item[\textcolor{orange}{\textbullet}] сформувати рекомендації стосовно застосування на практиці в кризові періоди торгових стратегій на основі методів технічного аналізу
+\end{itemize}
+\end{frame}
+
+\section{Методи дослідження та джерельна база}
+
+\begin{frame}
+\frametitle{Методи дослідження та джерельна база}
+\begin{itemize}
+\item \alert {Методи дослідження}: 
+\begin{itemize}
+    \item[\textcolor{orange}{\textbullet}] \textcolor{blue} {аналіз та систематизація} (для узагальнення інформації про особливості використання методів прогнозування та побудови торгових стратегій на фондовому ринку)
+    \item[\textcolor{orange}{\textbullet}] \textcolor{blue} {економіко-математичні методи} (для формалізації торгових правил з використанням методів технічного аналізу та автоматизації торгової стратегії з використанням сигналів за цими правилами) 
+    \item[\textcolor{orange}{\textbullet}] \textcolor{blue} {графічні методи} (для порівняння результативності торгових стратегій та для наочного представлення проміжних етапів та результатів дослідження), \item[\textcolor{orange}{\textbullet}] \textcolor{blue} {логічне узагальнення результатів} (для формулювання висновків та рекомендацій).
+\end{itemize}
+\tinyskip
+\item \alert {Джерельна база}: наукові статті та матеріали конференцій, аналітичні матеріали, підручники та монографії відповідної тематики; investing.com та yahoo!finance для котирування акцій та фондових індексів зі щоденною періодичністю, для країн, що розвиваються; World Economic Outlook Database (IMF) для основних макроекономічних показників.
+\end{itemize}
+\end{frame}
+
+\section{Аналіз відомих результатів}
+\begin{frame}
+\frametitle{Аналіз відомих результатів (1)}
+\begin{itemize}
+\item Lerby Ergun, Alexander Molchanov, Philip Stork на основі даних по фондових індексах 39 країн за період до 2021 року з врахуванням транзакційних витрат з’ясували, що використання стратегій на основі методів технічного аналізу дозволяє суттєво знизити ризики значної просадки; важливо, що цей ефект посилюється в періоди рецесій, при цьому навіть за умови зменшення ризику прибутковість таких стратегій в більшості випадків була кращою за пасивну стратегію \textcolor{gray}{[1]}
+\tinyskip
+\item Lento та Gradojevic на основі високочастотних виявили, що під час падіння ринків внаслідок пандемії COVID-19 деякі торгові правила дозволяли отримати кращі результати, аніж пасивна торгова стратегія, втім після врахування транзакційних витрат лише 2 методи технічного аналізу все ще демонстрували кращі результати \textcolor{gray}{[2]}
+\end{itemize}
+\tinyskip
+\scriptsize 
+\begin{enumerate}
+\scriptsize \item \textcolor{gray}{Lento C, Gradojevic N. The Profitability of Technical Analysis during the COVID-19 Market Meltdown. Journal of Risk and Financial Management. 2022. №15(5)} 
+ \scriptsize\item \textcolor{gray}{Lerby Ergun, Alexander Molchanov, Philip Stork. Technical trading rules, loss avoidance, and the business cycle. Pacific-Basin Finance Journal. 2023. №82}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Аналіз відомих результатів (2)}
+\begin{center}
+\includegraphics[scale=0.40]{TA2.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Аналіз відомих результатів (3)}
+\begin{itemize}
+\item На основі аналізу автокореляційної функції першого порядку (дані по місячній дохідності S&P Composite Index, 1871-2003 рр. \textcolor{gray}{[3]}) Andrew Lo стверджує, що рівень ефективності ринків змінюється циклічно. Таким чином, активні стратегії потенційно здатні давати прибутки, вищі за «buy-and-hold», але лише протягом певних періодів, коли ефективність ринків зменшується. 
+\tinyskip
+\item Справді, дослідження \textcolor{gray}{[4]} підтверджує, що в період з 2005 по 2007 рр. методи технічного аналізу демонстрували кращі результати, аніж в середньому за 2005-2013 рр. (більше 7000 правил ТА, CSI 300). Аналогічні результати отримано при аналізі європейських ринків \textcolor{gray}{[5]}.
+\tinyskip
+\item Можемо припустити, що відповідно до AMH технічний аналіз може бути прибутковим принаймні в короткостроковому періоді, зокрема в кризові роки.
+\tinyskip
+\scriptsize 
+\begin{enumerate}
+\setcounter{enumi}{2}
+\scriptsize \item \textcolor{gray}{A. W. Lo. Reconciling Efficient Markets with Behavioral Finance} 
+\scriptsize \item \textcolor{gray}{S. Wang, Z.-Q. Jiang. Testing the performance of technical trading rules in the Chinese market based on superior predictive test}
+\scriptsize \item \textcolor{gray}{ A. Todea, A. Zoicas-Ienciu, A.-M. Filip. Profitability of the Moving Average Strategy and the Episodic Dependencies: Empirical Evidence from European Stock}
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\section{Констатація невирішених проблем}
+\begin{frame}
+\frametitle{Констатація невирішених проблем}
+\begin{itemize}
+\item Доцільність застосування методів технічного аналізу в \alert {кризові періоди в ситуації падіння фондового ринку і подальшого відновлення}
+\tinyskip
+\item \alert {Ігнорування транзакційних витрат} в частині досліджень, хоча їх врахування є критично важливим при визначенні результативності торгових стратегій
+\tinyskip
+\item Доцільність \alert {застосування методів технічного аналізу на вітчизняному ринку} (дослідження, присвячені українському фондовому ринку, мають майже виключно теоретичний характер)
+\tinyskip
+\item Менша увага \alert {ринкам країн, що розвиваються}, порівняно з розвинутими країнами (що можна пояснити більшою доступністю даних для аналізу та більшими доступними часовими періодами для розвинутих країн)
+\tinyskip
+\item Використання \alert {лише одного з підходів до оцінки параметрів}: або точкова оцінка за традиційної розбивки на навчальну (тренувальну) та тестову вибірки, або розрахунок для всієї множини можливих правил технічного аналізу, майже відсутнє одночасне поєднання обох підходів та порівняння результатів підбору параметрів за двома підходами
+\end{itemize}
+\end{frame}
+
+\section{Очікувані результати наукового дослідження}
+\begin{frame}
+\frametitle{Очікувані результати наукового дослідження}
+\begin{itemize}
+\item \alert {Очікувана теоретична цінність}: подальше дослідження питання доцільності застосування методів технічного аналізу та торгових стратегій, побудованих на їх основі, на практиці в кризові періоди для країн, що розвиваються. При цьому буде виконано як оцінку результативності на основі загальної сукупності результатів для торгових стратегій, так і на основі точкової оцінки на основі історичних даних, що передують кризовому періоду.
+\bigskip
+\item \alert {Очікувана практична цінність}: надання практичних рекомендацій учасникам ринку стосовно побудови торгових стратегій на основі методів технічного аналізу в кризові періоди. Також зібрана для виконання роботи база даних (SQL, SSMS) та скрипти розроблених програм (Python) для підбору параметрів та оцінки результативності торгових стратегій можуть бути використані як науковцями для подальших досліджень суміжної тематики, так практиками ринку для оцінки побудованих торгових стратегій.
+\end{itemize}
+\end{frame}
+
+\section{Q\&A}
+\begin{frame}
+\frametitle {Q\&A - Результативність торгових стратегій у кризові періоди на фондових ринках країн, що розвиваються}
+\setbeamertemplate{section in toc}[circle]
+%\setbeamercolor{section in toc}{fg=UniBlue}
+%\setbeamercolor*{section in toc}{fg=UniBlue}
+\tableofcontents
+\end{frame}
+
+\end{document}
